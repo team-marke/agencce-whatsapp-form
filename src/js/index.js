@@ -5,6 +5,7 @@ import Modal from "./components/modal";
 import Btn from "./components/btn";
 import GsheetsSaveForm from "./components/Form/js/extensions/gsheets-save-form";
 import defaultOptions from "./components/defaultOptions";
+import { Modal as BsModal } from "bootstrap";
 
 const renderElements = () => {
   // Instâncias Cliente
@@ -132,12 +133,6 @@ const renderElements = () => {
   document.body.appendChild(btnWrapper);
 };
 
-const loadModal = async () => {
-  if (document.querySelector(".modal")) {
-    await import("bootstrap/js/dist/modal");
-  }
-};
-
 const loadForm = () => {
   if (document.querySelector(".form")) {
     const elements = Array.from(document.querySelectorAll(".form"));
@@ -149,5 +144,4 @@ const loadForm = () => {
 };
 
 renderElements();
-loadModal();
 loadForm();
