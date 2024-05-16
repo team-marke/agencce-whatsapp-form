@@ -88,8 +88,8 @@ export default class Form {
     }" data-redirect="${this.redirect}">
         <div class="row g-3">
         ${this.getFields()}
-        <div class="col">
-          <button type="submit" class="btn btn-primary text-white">Enviar</button>
+        <div class="col-12">
+          <button type="submit" class="button">Enviar</button>
         </div>
         </div>
       </form>

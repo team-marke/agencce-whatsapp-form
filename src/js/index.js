@@ -49,6 +49,7 @@ const renderElements = () => {
         label: "Profissional de interesse",
         gsheetField: "Profissional de interesse",
         options: defaultOptions,
+        size: 12,
       },
     ],
   });
@@ -105,6 +106,7 @@ const renderElements = () => {
         label: "Vaga de interesse",
         gsheetField: "Vaga de interesse",
         options: defaultOptions,
+        size: 12,
       },
     ],
   });
