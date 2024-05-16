@@ -1,39 +1,59 @@
-// Import our custom CSS
 import "../scss/styles.scss";
 
 import Form from "./components/form";
 import Modal from "./components/modal";
 import Btn from "./components/btn";
+import GsheetsSaveForm from "./components/Form/js/extensions/gsheets-save-form";
+import defaultOptions from "./components/defaultOptions";
 
 const renderElements = () => {
   // Instâncias Cliente
   const formCliente = new Form({
-    id: "cliente-form",
+    id: "form-cliente",
+    fileId: "1skNCp7uN6YK46MC",
+    redirect: 'https://wa.me/5551996412233',
     fields: [
       {
         type: "text",
-        id: "contact-name",
+        id: "form-cliente-nome",
         label: "Nome",
-        name: "name",
-      },
-      {
-        type: "email",
-        id: "contact-email",
-        label: "Email",
-        name: "email",
+        gsheetField: "Nome",
+        size: 6,
       },
       {
         type: "tel",
-        id: "contact-phone",
+        id: "form-cliente-telefone",
         label: "Telefone",
-        name: "phone",
+        gsheetField: "Telefone",
+        placeholder: '51999999',
+        size: 6,
+      },
+      {
+        type: "select-location-state",
+        id: "form-cliente-estado",
+        label: "Estado",
+        gsheetField: "Estado",
+        size: 6,
+      },
+      {
+        type: "select-location-city",
+        id: "form-cliente-cidade",
+        label: "Cidade",
+        gsheetField: "Cidade",
+        size: 6,
+      },
+      {
+        type: "select",
+        id: "form-cliente-profissional",
+        label: "Profissional de interesse",
+        gsheetField: "Profissional de interesse",
+        options: defaultOptions,
       },
     ],
   });
 
   const modalCliente = new Modal({
     id: "cliente-modal",
-    header: "Preencha o formulário para falar com o nosso especialista.",
     body: formCliente.render(),
   });
 
@@ -45,26 +65,51 @@ const renderElements = () => {
 
   // Instâncias Candidato
   const formCandidato = new Form({
-    id: "candidato-form",
+    id: "form-candidato",
+    fileId: "5gr3x50IXLh9aABm",
+    redirect: 'https://wa.me/5551998666622',
     fields: [
       {
         type: "text",
-        id: "contact-name",
+        id: "form-candidato-nome",
         label: "Nome",
-        name: "name",
+        gsheetField: "Nome",
+        size: 6,
       },
       {
         type: "tel",
-        id: "contact-phone",
+        id: "form-candidato-telefone",
         label: "Telefone",
-        name: "phone",
+        gsheetField: "Telefone",
+        placeholder: '51999999',
+        size: 6,
+      },
+      {
+        type: "select-location-state",
+        id: "form-candidato-estado",
+        label: "Estado",
+        gsheetField: "Estado",
+        size: 6,
+      },
+      {
+        type: "select-location-city",
+        id: "form-candidato-cidade",
+        label: "Cidade",
+        gsheetField: "Cidade",
+        size: 6,
+      },
+      {
+        type: "select",
+        id: "form-candidato-vaga",
+        label: "Vaga de interesse",
+        gsheetField: "Vaga de interesse",
+        options: defaultOptions,
       },
     ],
   });
 
   const modalCandidato = new Modal({
     id: "candidato-modal",
-    header: "Preencha o formulário para falar com o nosso especialista.",
     body: formCandidato.render(),
   });
 
@@ -75,7 +120,7 @@ const renderElements = () => {
   });
 
   const btnWrapper = document.createElement("div");
-  btnWrapper.classList.add('agencce-whatsapp-form-btns')
+  btnWrapper.classList.add("agencce-whatsapp-form-btns");
   btnWrapper.innerHTML += btnCandidato.render();
   btnWrapper.innerHTML += btnCliente.render();
 
@@ -93,5 +138,16 @@ const loadModal = async () => {
   }
 };
 
+const loadForm = () => {
+  if (document.querySelector(".form")) {
+    const elements = Array.from(document.querySelectorAll(".form"));
+    for (const element of elements) {
+      console.log(element);
+      new GsheetsSaveForm(element);
+    }
+  }
+};
+
 renderElements();
 loadModal();
+loadForm();
