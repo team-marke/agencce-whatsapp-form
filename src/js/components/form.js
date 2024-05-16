@@ -30,9 +30,9 @@ export default class Form {
 
   getSelectField(field) {
     return `
-      <label for="${field.id}" class="form-label">${field.label}</label>
+      <label for="${field.id}">${field.label}</label>
       <select 
-        class="form-select form__select" 
+        class="form__select" 
         id="${field.id}" 
         data-gsheet-field="${field.gsheetField}"
       >
@@ -43,22 +43,22 @@ export default class Form {
 
   getLocationCityField(field) {
     return `
-      <label for="${field.id}" class="form-label">${field.label}</label>
-      <select data-location="true" data-location-field="city" class="form-select form__select" id="${field.id}" data-gsheet-field="${field.gsheetField}" disabled></select>
+      <label for="${field.id}">${field.label}</label>
+      <select data-location="true" data-location-field="city" class="form__select" id="${field.id}" data-gsheet-field="${field.gsheetField}" disabled></select>
     `;
   }
 
   getLocationStateField(field) {
     return `
-      <label for="${field.id}" class="form-label">${field.label}</label>
-      <select data-location="true" data-location-field="state" class="form-select form__select" id="${field.id}" data-gsheet-field="${field.gsheetField}"></select>
+      <label for="${field.id}">${field.label}</label>
+      <select data-location="true" data-location-field="state" class="form__select" id="${field.id}" data-gsheet-field="${field.gsheetField}"></select>
     `;
   }
 
   getGenericField(field) {
     return `
-      <label for="${field.id}" class="form-label">${field.label}</label>
-      <input type="${field.type}" class="form-control form__control" id="${
+      <label for="${field.id}">${field.label}</label>
+      <input type="${field.type}" class="form__input" id="${
       field.id
     }" data-gsheet-field="${field.gsheetField}" ${this.getPlaceholder(field)}">
     `;
