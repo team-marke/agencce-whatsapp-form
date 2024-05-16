@@ -5,7 +5,7 @@ import Modal from "./components/modal";
 import Btn from "./components/btn";
 import GsheetsSaveForm from "./components/Form/js/extensions/gsheets-save-form";
 import defaultOptions from "./components/defaultOptions";
-import { Modal as BsModal } from "bootstrap";
+// import { Modal as BsModal } from "bootstrap";
 
 const renderElements = () => {
   // Instâncias Cliente
