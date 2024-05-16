@@ -9,7 +9,7 @@ export default class Form {
   getFields() {
     let str = "";
     for (const field of this.fields) {
-      str += `<div class="col-${field.size ? field.size : "col-3"}">`;
+      str += `<div class="col-${field.size ? field.size : "3"}">`;
       switch (field.type) {
         case "select":
           str += this.getSelectField(field);
@@ -32,7 +32,7 @@ export default class Form {
     return `
       <label for="${field.id}" class="form-label">${field.label}</label>
       <select 
-        class="form-select" 
+        class="form-select form__select" 
         id="${field.id}" 
         data-gsheet-field="${field.gsheetField}"
       >
@@ -44,21 +44,21 @@ export default class Form {
   getLocationCityField(field) {
     return `
       <label for="${field.id}" class="form-label">${field.label}</label>
-      <select data-location="true" data-location-field="city" class="form-select" id="${field.id}" data-gsheet-field="${field.gsheetField}" disabled></select>
+      <select data-location="true" data-location-field="city" class="form-select form__select" id="${field.id}" data-gsheet-field="${field.gsheetField}" disabled></select>
     `;
   }
 
   getLocationStateField(field) {
     return `
       <label for="${field.id}" class="form-label">${field.label}</label>
-      <select data-location="true" data-location-field="state" class="form-select" id="${field.id}" data-gsheet-field="${field.gsheetField}"></select>
+      <select data-location="true" data-location-field="state" class="form-select form__select" id="${field.id}" data-gsheet-field="${field.gsheetField}"></select>
     `;
   }
 
   getGenericField(field) {
     return `
       <label for="${field.id}" class="form-label">${field.label}</label>
-      <input type="${field.type}" class="form-control" id="${
+      <input type="${field.type}" class="form-control form__control" id="${
       field.id
     }" data-gsheet-field="${field.gsheetField}" ${this.getPlaceholder(field)}">
     `;
