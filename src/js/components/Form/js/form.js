@@ -1,7 +1,5 @@
-import BtnSpinner from './btn-spinner';
-import ToastResponse from './toast-response';
-import TelField from './custom-fields/tel-field';
-import LocationFields from './custom-fields/location-fields';
+import TelField from "./custom-fields/tel-field";
+import LocationFields from "./custom-fields/location-fields";
 
 /**
  * Default component for sending emails with Marke Forms V2
@@ -10,18 +8,22 @@ import LocationFields from './custom-fields/location-fields';
 export default class Form {
   constructor(form) {
     this.form = form;
-    this.fields = Array.from(form.elements).filter((element) => !(element instanceof HTMLButtonElement));
-    this.successMsg = form.dataset.messageSuccess || 'Formulário enviado com sucesso!';
-    this.errorMsg = form.dataset.messageError || 'Houve um erro ao enviar o formulário, tente novamente mais tarde!';
+    this.fields = Array.from(form.elements).filter(
+      (element) => !(element instanceof HTMLButtonElement)
+    );
+    this.successMsg =
+      form.dataset.messageSuccess || "Formulário enviado com sucesso!";
+    this.errorMsg =
+      form.dataset.messageError ||
+      "Houve um erro ao enviar o formulário, tente novamente mais tarde!";
     this.redirect = form.dataset.redirect;
-    this.btnSpinner = new BtnSpinner(form.querySelector('button[type=submit]'));
-    this.toastResponse = new ToastResponse();
-    this.submitEvent = new CustomEvent('mkformsubmit', {
+    this.submitEvent = new CustomEvent("mkformsubmit", {
       detail: {},
       bubbles: true,
       cancelable: true,
       composed: false,
     });
+    this.submitButton = form.querySelector('button[type="submit"]');
     this.initTelFields();
     this.initLocationFields();
     this.listenFormEvents();
@@ -57,7 +59,9 @@ export default class Form {
   }
 
   async submit() {
-    this.btnSpinner.startSpin();
+    // this.btnSpinner.startSpin();
+    let submitBtnOldValue = this.submitButton.value;
+    this.submitButton.value = "Enviando...";
     try {
       const url = process.env.FORM_SUBMIT_URL;
       const body = JSON.stringify({
@@ -68,28 +72,30 @@ export default class Form {
         sendGridAPIKey: process.env.SENDGRID_API_KEY || false,
       });
       const res = await fetch(url, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: body,
       });
       if (res.status == 201) {
         this.dispatchSubmitEvent();
-        this.showFeedback(this.successMsg, 'success');
+        // this.showFeedback(this.successMsg, 'success');
         this.redirectURL();
       } else {
-        this.showFeedback(this.errorMsg, 'danger');
+        // this.showFeedback(this.errorMsg, 'danger');
       }
     } catch (error) {
-      this.showFeedback(this.errorMsg, 'danger');
+      // this.showFeedback(this.errorMsg, 'danger');
     }
-    this.btnSpinner.stopSpin();
+    // this.btnSpinner.stopSpin();
+    this.submitButton.value = submitBtnOldValue;
+    this.submitButton.disabled = true;
   }
 
   initTelFields() {
     this.fields.forEach((field) => {
-      if (field.type == 'tel') {
+      if (field.type == "tel") {
         new TelField(field);
       }
     });
@@ -100,13 +106,13 @@ export default class Form {
     let cityField = false;
 
     this.fields.forEach((field) => {
-      if (field.dataset.locationField == 'state') {
+      if (field.dataset.locationField == "state") {
         stateField = field;
       }
     });
 
     this.fields.forEach((field) => {
-      if (field.dataset.locationField == 'city') {
+      if (field.dataset.locationField == "city") {
         cityField = field;
       }
     });
@@ -117,7 +123,7 @@ export default class Form {
   }
 
   listenFormEvents() {
-    this.form.addEventListener('submit', (event) => {
+    this.form.addEventListener("submit", (event) => {
       event.preventDefault();
       event.stopPropagation();
       this.submit();

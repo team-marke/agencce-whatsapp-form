@@ -17,15 +17,37 @@
   }
 
   &__btn span {
-    padding: 0.25rem;
+    padding: 0.35rem;
   }
 
   &__svg-wrapper {
     background: #25d366;
-    padding: 0.15rem;
+    padding: 0.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
   &__svg-wrapper svg {
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.modal {
+  .btn-close {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .form__input,
+  .form__select {
+    margin-bottom: 1rem !important;
+    height: 50px !important;
+  }
+
+  .modal-body {
+    padding: 2rem !important;
   }
 }
