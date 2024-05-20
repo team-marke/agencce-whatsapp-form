@@ -148,7 +148,7 @@ const loadLinkInterceptors = () => {
   console.log(a);
   a.addEventListener("click", (e) => {
     e.preventDefault();
-    btnCliente.click();
+    document.querySelector("#candidato-btn").click();
   });
 };
 
