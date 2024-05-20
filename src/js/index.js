@@ -13,6 +13,7 @@ const renderElements = () => {
     id: "form-cliente",
     fileId: "1skNCp7uN6YK46MC",
     redirect: "https://wa.me/5551996412233",
+    submitEventName: 'mkformsubmit-cliente',
     fields: [
       {
         type: "text",
@@ -70,6 +71,7 @@ const renderElements = () => {
     id: "form-candidato",
     fileId: "5gr3x50IXLh9aABm",
     redirect: "https://wa.me/5551998666622",
+    submitEventName: 'mkformsubmit-candidato',
     fields: [
       {
         type: "text",

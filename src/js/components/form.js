@@ -1,9 +1,10 @@
 export default class Form {
-  constructor({ id, fields, fileId, redirect }) {
+  constructor({ id, fields, fileId, redirect, submitEventName }) {
     this.id = id;
     this.fields = fields;
     this.fileId = fileId;
     this.redirect = redirect;
+    this.submitEventName = submitEventName;
   }
 
   getFields() {
@@ -85,7 +86,7 @@ export default class Form {
     return `
       <form id="${this.id}" class="form-submit" data-file-id="${
       this.fileId
-    }" data-redirect="${this.redirect}">
+    }" data-redirect="${this.redirect}" data-submit-event-name=${this.submitEventName}>
         <div class="row g-3">
         ${this.getFields()}
         <div class="col-12">
