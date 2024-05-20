@@ -26,8 +26,8 @@ export default class GsheetsSaveForm extends Form {
   }
 
   async submit() {
-    let submitBtnOldValue = this.submitButton.innnerHTML;
-    this.submitButton.innnerHTML = "Enviando...";
+    let submitBtnOldValue = this.submitButton.innerHTML;
+    this.submitButton.innerHTML = "Enviando...";
     try {
       const url = `https://api.apispreadsheets.com/data/${this.fileId}`;
       const headers = { "Content-Type": "application/json" };
@@ -49,7 +49,7 @@ export default class GsheetsSaveForm extends Form {
     } catch (error) {
       console.error(error);
     }
-    this.submitButton.innnerHTML = submitBtnOldValue;
+    this.submitButton.innerHTML = submitBtnOldValue;
     this.submitButton.disabled = true;
   }
 }
