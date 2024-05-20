@@ -8,6 +8,7 @@ export default class GsheetsSaveForm extends Form {
   constructor(form) {
     super(form);
     this.fileId = form.dataset.fileId;
+    console.dir(this.submitButton)
   }
 
   getDate() {
