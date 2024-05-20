@@ -159,7 +159,9 @@ const loadLinkInterceptors = () => {
 };
 
 window.addEventListener("load", (event) => {
-  renderElements();
-  loadForm();
-  loadLinkInterceptors();
+  setTimeout(() => {
+    renderElements();
+    loadForm();
+    loadLinkInterceptors();
+  }, 2000);
 });
