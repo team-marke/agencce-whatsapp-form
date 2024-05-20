@@ -51,15 +51,7 @@ export default class Form {
     }
   }
 
-  showFeedback(message, theme) {
-    this.toastResponse.showToast({
-      text: message,
-      theme: theme,
-    });
-  }
-
   async submit() {
-    // this.btnSpinner.startSpin();
     let submitBtnOldValue = this.submitButton.value;
     this.submitButton.value = "Enviando...";
     try {
@@ -80,15 +72,14 @@ export default class Form {
       });
       if (res.status == 201) {
         this.dispatchSubmitEvent();
-        // this.showFeedback(this.successMsg, 'success');
+        console.log(res);
         this.redirectURL();
       } else {
-        // this.showFeedback(this.errorMsg, 'danger');
+        console.log(res);
       }
     } catch (error) {
-      // this.showFeedback(this.errorMsg, 'danger');
+      console.error(error);
     }
-    // this.btnSpinner.stopSpin();
     this.submitButton.value = submitBtnOldValue;
     this.submitButton.disabled = true;
   }

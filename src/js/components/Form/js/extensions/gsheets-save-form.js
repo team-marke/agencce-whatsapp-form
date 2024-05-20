@@ -1,4 +1,4 @@
-import Form from '../form';
+import Form from "../form";
 
 /**
  * Form for saving the data in to a Google Sheet
@@ -8,7 +8,6 @@ export default class GsheetsSaveForm extends Form {
   constructor(form) {
     super(form);
     this.fileId = form.dataset.fileId;
-    console.log(this.fileId);
   }
 
   getDate() {
@@ -21,33 +20,35 @@ export default class GsheetsSaveForm extends Form {
       if (!field.value) return;
       data[field.dataset.gsheetField] = field.value;
     });
-    data['Data'] = this.getDate();
+    data["Data"] = this.getDate();
     return data;
   }
 
   async submit() {
-    this.btnSpinner.startSpin();
+    let submitBtnOldValue = this.submitButton.value;
+    this.submitButton.value = "Enviando...";
     try {
       const url = `https://api.apispreadsheets.com/data/${this.fileId}`;
-      const headers = { 'Content-Type': 'application/json' };
+      const headers = { "Content-Type": "application/json" };
       const body = JSON.stringify({
         data: this.getFormData(),
       });
       const res = await fetch(url, {
-        method: 'POST',
+        method: "POST",
         headers: headers,
         body: body,
       });
       if (res.status == 201) {
         this.dispatchSubmitEvent();
-        this.showFeedback(this.successMsg, 'success');
+        console.log(res);
         this.redirectURL();
       } else {
-        this.showFeedback(this.errorMsg, 'danger');
+        console.log(res);
       }
     } catch (error) {
-      this.showFeedback(this.errorMsg, 'danger');
+      console.error(error);
     }
-    this.btnSpinner.stopSpin();
+    this.submitButton.value = submitBtnOldValue;
+    this.submitButton.disabled = true;
   }
 }
