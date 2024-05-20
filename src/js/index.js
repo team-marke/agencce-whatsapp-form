@@ -139,7 +139,6 @@ const loadForm = () => {
   if (document.querySelector(".form-submit")) {
     const elements = Array.from(document.querySelectorAll(".form-submit"));
     for (const element of elements) {
-      console.log(element);
       new GsheetsSaveForm(element);
     }
   }
@@ -151,7 +150,6 @@ const loadLinkInterceptors = () => {
       'a[href="tel:+5551996412233"], a[href="https://wa.me/5551996412233"]'
     )
   );
-  console.log(elements);
   for (const element of elements) {
     element.addEventListener("click", (e) => {
       e.preventDefault();
