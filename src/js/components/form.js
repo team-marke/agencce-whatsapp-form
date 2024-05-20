@@ -83,7 +83,7 @@ export default class Form {
 
   render() {
     return `
-      <form id="${this.id}" class="form" data-file-id="${
+      <form id="${this.id}" class="form-submit" data-file-id="${
       this.fileId
     }" data-redirect="${this.redirect}">
         <div class="row g-3">

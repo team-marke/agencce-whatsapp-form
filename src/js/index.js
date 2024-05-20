@@ -136,8 +136,8 @@ const renderElements = () => {
 };
 
 const loadForm = () => {
-  if (document.querySelector(".form")) {
-    const elements = Array.from(document.querySelectorAll(".form"));
+  if (document.querySelector(".form-submit")) {
+    const elements = Array.from(document.querySelectorAll(".form-submit"));
     for (const element of elements) {
       console.log(element);
       new GsheetsSaveForm(element);
