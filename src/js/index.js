@@ -146,12 +146,18 @@ const loadForm = () => {
 };
 
 const loadLinkInterceptors = () => {
-  const a = document.querySelector('a[href="tel:+5551996412233"]');
-  console.log(a);
-  a.addEventListener("click", (e) => {
-    e.preventDefault();
-    document.querySelector("#candidato-btn").click();
-  });
+  const elements = Array.from(
+    document.querySelectorAll(
+      'a[href="tel:+5551996412233"], a[href="https://wa.me/5551996412233"]'
+    )
+  );
+  console.log(elements);
+  for (const element of elements) {
+    element.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.querySelector("#candidato-btn").click();
+    });
+  }
 };
 
 window.addEventListener("load", (event) => {
