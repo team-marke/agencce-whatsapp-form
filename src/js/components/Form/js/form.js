@@ -17,7 +17,8 @@ export default class Form {
       form.dataset.messageError ||
       "Houve um erro ao enviar o formulário, tente novamente mais tarde!";
     this.redirect = form.dataset.redirect;
-    this.submitEvent = new CustomEvent(form.dataset.submitEventName || "mkformsubmit", {
+    console.log(form.dataset.submitEventName);
+    this.submitEvent = new CustomEvent(form.dataset.submitEventName, {
       detail: {},
       bubbles: true,
       cancelable: true,

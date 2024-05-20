@@ -36,6 +36,7 @@ export default class Form {
         class="form__select" 
         id="${field.id}" 
         data-gsheet-field="${field.gsheetField}"
+        required
       >
       ${this.getSelectOptions(field)}
       </select>
@@ -45,14 +46,14 @@ export default class Form {
   getLocationCityField(field) {
     return `
       <label for="${field.id}">${field.label}</label>
-      <select data-location="true" data-location-field="city" class="form__select" id="${field.id}" data-gsheet-field="${field.gsheetField}" disabled></select>
+      <select data-location="true" data-location-field="city" class="form__select" id="${field.id}" data-gsheet-field="${field.gsheetField}" disabled required></select>
     `;
   }
 
   getLocationStateField(field) {
     return `
       <label for="${field.id}">${field.label}</label>
-      <select data-location="true" data-location-field="state" class="form__select" id="${field.id}" data-gsheet-field="${field.gsheetField}"></select>
+      <select data-location="true" data-location-field="state" class="form__select" id="${field.id}" data-gsheet-field="${field.gsheetField}" required></select>
     `;
   }
 
@@ -61,7 +62,7 @@ export default class Form {
       <label for="${field.id}">${field.label}</label>
       <input type="${field.type}" class="form__input" id="${
       field.id
-    }" data-gsheet-field="${field.gsheetField}" ${this.getPlaceholder(field)}">
+    }" data-gsheet-field="${field.gsheetField}" ${this.getPlaceholder(field)}" required>
     `;
   }
 
