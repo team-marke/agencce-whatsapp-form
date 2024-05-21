@@ -4,20 +4,12 @@ const defaultOptions = [
     text: "Doméstica",
   },
   {
-    value: "Doméstica/Babá",
-    text: "Doméstica/Babá",
-  },
-  {
     value: "Babá",
     text: "Babá",
   },
   {
     value: "Cozinheira Residencial",
     text: "Cozinheira Residencial",
-  },
-  {
-    value: "Cozinheira/Roupas",
-    text: "Cozinheira/Roupas",
   },
   {
     value: "Acompanhante de Idosos",
@@ -40,8 +32,16 @@ const defaultOptions = [
     text: "Caseiro",
   },
   {
+    value: "Cozinheira/Roupas",
+    text: "Cozinheira/Roupas",
+  },
+  {
     value: "Diarista",
     text: "Diarista",
+  },
+  {
+    value: "Doméstica/Babá",
+    text: "Doméstica/Babá",
   },
   {
     value: "Doméstica/Cozinheira",
