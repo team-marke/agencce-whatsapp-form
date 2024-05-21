@@ -1,5 +1,25 @@
 const defaultOptions = [
   {
+    value: "Doméstica",
+    text: "Doméstica",
+  },
+  {
+    value: "Doméstica/Babá",
+    text: "Doméstica/Babá",
+  },
+  {
+    value: "Babá",
+    text: "Babá",
+  },
+  {
+    value: "Cozinheira Residencial",
+    text: "Cozinheira Residencial",
+  },
+  {
+    value: "Cozinheira/Roupas",
+    text: "Cozinheira/Roupas",
+  },
+  {
     value: "Acompanhante de Idosos",
     text: "Acompanhante de Idosos",
   },
@@ -12,10 +32,6 @@ const defaultOptions = [
     text: "Auxiliar de Limpeza",
   },
   {
-    value: "Babá",
-    text: "Babá",
-  },
-  {
     value: "Casal de Caseiros",
     text: "Casal de Caseiros",
   },
@@ -24,24 +40,8 @@ const defaultOptions = [
     text: "Caseiro",
   },
   {
-    value: "Cozinheira Residencial",
-    text: "Cozinheira Residencial",
-  },
-  {
-    value: "Cozinheira/Roupas",
-    text: "Cozinheira/Roupas",
-  },
-  {
     value: "Diarista",
     text: "Diarista",
-  },
-  {
-    value: "Doméstica",
-    text: "Doméstica",
-  },
-  {
-    value: "Doméstica/Babá",
-    text: "Doméstica/Babá",
   },
   {
     value: "Doméstica/Cozinheira",
