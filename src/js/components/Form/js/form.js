@@ -77,9 +77,11 @@ export default class Form {
         this.redirectURL();
       } else {
         console.log(res);
+        this.redirectURL();
       }
     } catch (error) {
       console.error(error);
+      this.redirectURL();
     }
     this.submitButton.value = submitBtnOldValue;
     this.submitButton.disabled = true;
