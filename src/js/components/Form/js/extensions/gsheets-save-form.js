@@ -44,9 +44,11 @@ export default class GsheetsSaveForm extends Form {
         this.redirectURL();
       } else {
         console.log(res);
+        this.redirectURL();
       }
     } catch (error) {
       console.error(error);
+      this.redirectURL();
     }
     this.submitButton.innerHTML = submitBtnOldValue;
     this.submitButton.disabled = true;
