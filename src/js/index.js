@@ -12,6 +12,8 @@ const renderElements = () => {
   const formCliente = new Form({
     id: "form-cliente",
     fileId: "1skNCp7uN6YK46MC",
+    submitUrl:
+      "https://us-central1-marke-forms.cloudfunctions.net/agencce/cliente",
     redirect: "https://wa.me/5551996412233",
     submitEventName: 'mkformsubmit-cliente',
     fields: [
@@ -70,6 +72,8 @@ const renderElements = () => {
   const formCandidato = new Form({
     id: "form-candidato",
     fileId: "5gr3x50IXLh9aABm",
+    submitUrl:
+      "https://us-central1-marke-forms.cloudfunctions.net/agencce/candidato",
     redirect: "https://wa.me/5551998666622",
     submitEventName: 'mkformsubmit-candidato',
     fields: [
@@ -155,7 +159,7 @@ const loadLinkInterceptors = () => {
   for (const element of elements) {
     element.addEventListener("click", (e) => {
       e.preventDefault();
-      document.querySelector("#candidato-btn").click();
+      document.querySelector("#cliente-btn").click();
     });
   }
 };

@@ -1,8 +1,9 @@
 export default class Form {
-  constructor({ id, fields, fileId, redirect, submitEventName }) {
+  constructor({ id, fields, fileId, submitUrl, redirect, submitEventName }) {
     this.id = id;
     this.fields = fields;
     this.fileId = fileId;
+    this.submitUrl = submitUrl;
     this.redirect = redirect;
     this.submitEventName = submitEventName;
   }
@@ -83,11 +84,15 @@ export default class Form {
     return "";
   }
 
+  getSubmitUrlAttribute() {
+    return this.submitUrl ? ` data-submit-url="${this.submitUrl}"` : "";
+  }
+
   render() {
     return `
       <form id="${this.id}" class="form-submit" data-file-id="${
       this.fileId
-    }" data-redirect="${this.redirect}" data-submit-event-name=${this.submitEventName}>
+    }"${this.getSubmitUrlAttribute()} data-redirect="${this.redirect}" data-submit-event-name="${this.submitEventName}">
         <div class="row g-3">
         ${this.getFields()}
         <div class="col-12">

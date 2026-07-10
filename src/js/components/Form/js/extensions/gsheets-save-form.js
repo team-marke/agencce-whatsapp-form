@@ -8,6 +8,7 @@ export default class GsheetsSaveForm extends Form {
   constructor(form) {
     super(form);
     this.fileId = form.dataset.fileId;
+    this.submitUrl = form.dataset.submitUrl;
   }
 
   getDate() {
@@ -25,10 +26,14 @@ export default class GsheetsSaveForm extends Form {
   }
 
   async submit() {
-    let submitBtnOldValue = this.submitButton.innerHTML;
+    const submitBtnOldValue = this.submitButton.innerHTML;
     this.submitButton.innerHTML = "Enviando...";
+    this.submitButton.disabled = true;
+
     try {
-      const url = `https://api.apispreadsheets.com/data/${this.fileId}`;
+      const url =
+        this.submitUrl ||
+        `https://api.apispreadsheets.com/data/${this.fileId}`;
       const headers = { "Content-Type": "application/json" };
       const body = JSON.stringify({
         data: this.getFormData(),
@@ -38,19 +43,23 @@ export default class GsheetsSaveForm extends Form {
         headers: headers,
         body: body,
       });
-      if (res.status == 201) {
-        this.dispatchSubmitEvent();
-        console.log(res);
-        this.redirectURL();
-      } else {
-        console.log(res);
-        this.redirectURL();
+
+      if (!res.ok) {
+        throw new Error(`Falha ao enviar o formulário (HTTP ${res.status})`);
       }
+
+      this.dispatchSubmitEvent();
+      this.form.reset();
+      console.log(res);
+      this.redirectURL();
     } catch (error) {
       console.error(error);
-      this.redirectURL();
+      window.alert(
+        "Não foi possível enviar o formulário. Confira sua conexão e tente novamente."
+      );
+    } finally {
+      this.submitButton.innerHTML = submitBtnOldValue;
+      this.submitButton.disabled = false;
     }
-    this.submitButton.innerHTML = submitBtnOldValue;
-    this.submitButton.disabled = true;
   }
 }

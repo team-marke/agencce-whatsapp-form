@@ -121,7 +121,6 @@ export default class Form {
       event.preventDefault();
       event.stopPropagation();
       this.submit();
-      this.form.reset();
     });
   }
 }
